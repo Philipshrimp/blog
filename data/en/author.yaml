@@ -2,7 +2,7 @@
 name: "Sunho Kim"
 nickname: "Philip"
 # greeting message before your name. it will default to "Hi! I am" if not provided
-greeting: "Hi, I am"
+greeting: "Welcome to my blog. I'm"
 image: "images/author/avatar.png"
 # give your some contact information. they will be used in the footer
 contactInfo:
@@ -11,4 +11,4 @@ contactInfo:
 
 # some summary about what you do
 summary:
-  - Test
+  - Under construction...😥
