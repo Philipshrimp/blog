@@ -1,0 +1,77 @@
+# section information
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true 
+
+# Your experiences
+experiences:
+- company:
+    name: CMES
+    url: "https://www.cmes3d.com/"
+    location: Seoul, Korea
+    # company overview
+    overview: 
+  positions:
+  - designation: AI Engineer
+    start: Dec 2021
+    # don't provide end date if you are currently working there. It will be replaced by "Present"
+    # end: Dec 2020
+    # give some points about what was your responsibilities at the company.
+    responsibilities:
+    - Depth enhancement algorithm research using deep learning
+    - 3D computer vision system design and development
+    - Prior research of deep learning for 3D computer vision
+
+- company:
+    name: ROBOTIS
+    url: "https://www.robotis.com/"
+    location: Seoul, Korea
+    overview: 
+  positions:
+  - designation: Algorithm Engineer
+    start: Sep 2020
+    end: Dec 2021
+    responsibilities:
+    - Localization performance enhancement for outdoor delivery robots
+    - Developing perception algorithms based on Modern C++
+    - Survey of vision sensors ans LiDARs for outdoor delivery robots
+    - Survey of enhancement for video streaming using GStreamer
+
+- company:
+    name: VIRNECT
+    url: "https://www.virnect.com/"
+    location: Seoul, Korea
+    overview: 
+  positions:
+  - designation: Research Engineer
+    start: July 2018
+    end: Sep 2020
+    responsibilities:
+    - Computer vision-based algorithm development and manual test for augmented reality SDK
+    - Various commercial AR SDK's research and test
+    - Open source Visual SLAM algorithm analysis and test
+  - designation: Project Manager
+    start: Mar 2019
+    end: Sep 2020
+    responsibilities:
+    - Project manager of augmented reality-based welding guidance project
+    - Project leader of augmented reality-based inspection guide of substation equipment project
+    - Preparing proposals for other projects
+
+- company:
+    name: KAIST Institute for Information Technology Convergence
+    url: "https://itc.kaist.ac.kr/"
+    location: Daejeon, Korea
+    overview: 
+  positions:
+  - designation: Intern
+    start: Jun 2014
+    end: July 2014
+    responsibilities:
+    - A study on the method of crime prediction system based on data mining
+    - Participate to develop a web page for crime prediction system 

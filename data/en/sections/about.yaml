@@ -1,0 +1,37 @@
+section:
+  name: About # Title of section (default: "")
+  id: about # url id/slug of section *Required*
+  enable: true # Boolean to determine if this section is enabled (default: false)
+  weight: 1 # Order to display section in (default: alphabetical followed by weight)
+  showOnNavbar: true # Boolean to determine if a link should be shown for this section on the navbar
+  template: sections/about.html # allows you to point to a specific template.
+# your designation
+designation: AI Engineer
+# your company information
+company:
+  name: CMES Inc.
+  url: "https://cmes3d.com/"
+summary: 'I am a research engineer interested in 3D computer vision. 
+I am a computer vision algorithm engineer with 5 years of experience, and I am currently focusing on research for high-accuracy depth estimation.
+And I am very interested in Visual SLAM and Deep Learning, and keeping an eye on state-of-the-arts algorithms.
+Also, I am interested in developing efficient programs, especially modern C++ development.'
+socialLinks:
+- name: Github
+  icon: "fab fa-github"
+  url: "https://github.com/Philipshrimp"
+
+- name: Codewars
+  icon: "fas fa-code"
+  url: "https://www.codewars.com/users/Philipshrimp"
+  
+- name: Twitter
+  icon: "fab fa-twitter"
+  url: "https://twitter.com/philip4___"
+
+- name: Facebook
+  icon: "fab fa-facebook"
+  url: "https://www.facebook.com/Ssunho.Kim/"
+
+- name: Instagram
+  icon: "fab fa-instagram"
+  url: "https://www.instagram.com/ssunho_kim/"

@@ -31,7 +31,7 @@ enableEmoji: true
 
 # Site parameters
 params:
-  background: "images/construction.png"
+  background: "images/bg.jpg"
 
   # GitHub repo URL and branch of your site
   gitRepo: https://github.com/Philipshrimp/Philipshrimp.github.io
