@@ -1,8 +1,16 @@
 ---
 title: "CNN의 기본적인 구조 및 원리"
 date: 2022-06-28T20:25:21+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: CNN의 기본적인 구조 및 원리
+    identifier: cnn-basics
+    parent: neural-networks
+    weight: 10
 categories:
-  - Deep Learning
+  - Neural Networks
 tags:
   - Deep Learning
   - Neural Network
