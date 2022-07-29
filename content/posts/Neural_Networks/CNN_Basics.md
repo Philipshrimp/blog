@@ -57,11 +57,13 @@ MLP 구조의 뉴럴 네트워크의 경우, 일반적인 이미지를 입력으
 기본적인 CNN 구조는 각각의 히든 레이어가 여러개의 neuron이 1차원 벡터 형태로 쌓여 있는 구조가 아닌 3차원 volume으로 구성되어 있는 구조다. CNN에서는 입력 영상에 대해 각각의 레이어마다 주어진 weight 커널과의 합성곱(convolution)을 수행해 3차원 feature map volume을 출력해주는 구조로, 이미지에 대한 가로, 세로 크기는 줄여가며 각 영역에 대한 특징을 의미론적으로 압축해준 다음 최종적으로 1차원 벡터 형태의 출력을 도출하는 구조다.  
 
 
-(CNN 구조 이미지 추가할 것)
+![CNN_Architecture](https://www.mdpi.com/applsci/applsci-09-04500/article_deploy/html/images/applsci-09-04500-g001.png)  
 위 그림에 나와있듯이, CNN은 크게 Feature extraction과 Classification 구조로 나뉘어 있다. Feature extraction에서는 상술한 합성곱 과정을 통해 입력 영상의 해상도는 압축되고, 각 픽셀 영역마다 semantic한 정보들을 여러 dimension에 걸쳐 담아주는 feature map을 만들어낸다. 하나의 레이어 내에는 기본적으로 convolution layer, Activation function, Pooling layer로 구성되어 있다.  
 
-(CNN 연산 이미지 추가할 것)
+
+![Convolution](https://cdn-images-1.medium.com/max/1200/1*1okwhewf5KCtIPaFib4XaA.gif)  
 convolution layer에서는 입력으로 들어온 map과 해당 layer에 주어져 있는 kernel 간 합성곱 연산을 map 전체 영역에 대해 sliding window 형식으로 수행한다. 이 연산은 입력 map의 전체 channel에 대해 동일한 kernel을 사용하며, kernel의 차원은 우리가 출력으로 얻고자 하는 차원만큼 다르게 존재한다.  
+
 
 CNN이 이와 같은 방식으로 연산을 하기 때문에 두 가지 큰 강점을 가지고 있다. 
 
