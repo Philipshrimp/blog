@@ -5,4 +5,5 @@ menu:
     name: Development
     identifier: development
     weight: 100
+draft: true
 ---

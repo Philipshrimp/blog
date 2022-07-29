@@ -5,6 +5,7 @@ menu:
     name: Object Detection
     identifier: object-detection
     weight: 900
+draft: true
 ---
 
 

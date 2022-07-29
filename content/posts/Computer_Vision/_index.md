@@ -5,5 +5,6 @@ menu:
     name: Computer Vision
     identifier: computer-vision
     weight: 800
+draft: true
 ---
 

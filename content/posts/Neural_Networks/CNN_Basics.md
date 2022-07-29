@@ -1,6 +1,6 @@
 ---
 title: "CNN의 기본적인 구조 및 원리"
-date: 2022-06-28T20:25:21+09:00
+date: 2022-07-28T20:25:21+09:00
 author:
   name: Sunho Kim
 menu:
