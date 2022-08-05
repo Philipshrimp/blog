@@ -148,12 +148,12 @@ CNN에서는 이전 레이어에서 연산된 결과 map을 토대로 정보를 
 {{< vs 3>}}
 
 ##### Pooling layer의 back-propagation
-{{< img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c65daacb-e41d-4356-834c-39cee6418999/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T021744Z&X-Amz-Expires=86400&X-Amz-Signature=f43de61b028a92bdec47e3fddb6aaaff555a36c48f1b3abcaa896c892bb5274e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" width="600" align="center" >}}   
+{{< img src="http://i.imgur.com/m9gOiuc.png" width="600" align="center" >}}   
 {{< vs 3>}}
 위 그림은 Max pooling의 역전파 과정을 나타낸다. 뒷 레이어로부터 역전파된 gradient 값이 각각 delta_1, delta_2라고 할 때, 역전파를 통해 이전 영역으로 전파된 값을 delta_11, delta_12, delta_21, delta_22라고 하자. 그림 상에서는 max pooling이 두 개의 neuron으로부터 나온 결과로 표현되어 있다. 즉, max pooling은 두 개의 neuron 값 들로부터 가장 큰 값을 가져오게 된다는 말이다. 만약 윗 neuron 값이 max 값이어서 해당 값만을 pooling을 통해 가져왔다면 아랫 neuron은 사실상 의미가 없는 값이나 다름없게 된다. 따라서 이 pooling에 대해 반대로 역전파를 하게 되었을 땐 max 값이 있던 neuron에 대해서만 local gradient 가중치를 1로 주어 이전 delta 값을 역전파시키고, 다른 neuron에 대해서는 local gradient 가중치를 0으로 주어 이전 delta 값을 역으로 전달하지 않게 된다. ***(사실 이 부분을 읽으면서 들었던 의문점은 max 값이 어디서부터 온 것인지 그 위치에 대한 정보도 결국 기억해야 하는가라는 의문이 생겼습니다. 제가 그 과정 하나하나에 대한 이해가 짧아서 그럴 수 있는데, 아시는 분 댓글로 알려주시면 감사하겠습니다 ㅠㅠ)***    
 {{< vs 3>}}
 
-{{< img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ce81c126-b633-4c10-be0e-763f6fb2d531/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220804%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220804T013019Z&X-Amz-Expires=86400&X-Amz-Signature=d3b89acb051bd7d21e4c7f175d0b6f2f047f54a044f93901de759fa09230a85c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" width="600" align="center" >}}   
+{{< img src="http://i.imgur.com/xaFjFuC.png" width="600" align="center" >}}   
 {{< vs 3>}}
 반대로 average pooling은 평균 값을 기반으로 pooling을 수행하기 때문에 local gradient 값도 전체 neuron 갯수를 나눈 만큼이 된다. 평균을 구하는 공식이 있다고 할 때, 평균 공식에 대해 미분을 하면 결국 1/m만 남기 때문이다. 당연하겠지만, 단순히 뒷 레이어로부터 나온 gradient 값에 local gradient 값만 곱하면 나온다고 정리가 된 이유는 Back-propagation이 Chain rule 원리에 따라 값이 전파되기 때문이다.   
 {{< vs 3>}}
