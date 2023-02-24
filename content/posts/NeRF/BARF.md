@@ -161,7 +161,27 @@ $$ w_k(\alpha) = \begin{cases}
 
 
 ### Experimental results
-(Coming soon...)
+먼저 논문에서는 Image alignment 성능의 검증을 위해 원본 고양이 이미지를 5개의 패치로 crop하여 이에 대한 alignment를 진행한 결과를 보여주고 있다. 
+{{< vs 3>}}
+{{< img src="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/imagenet_patch.png" width="500" align="center" >}}
+{{< vs 3>}}
+{{< video src="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/videos2/imagenet_align.mp4" >}}
+{{< vs 3>}}
+영상의 결과는 왼쪽부터 NeRF를 그냥 돌린 것과 NeRF에 Full positional encoding을 돌린 것, 그리고 제안한 BARF를 돌린 결과를 순차적으로 보여주고 있다. 최종적인 결과를 놓고 보면 BARF가 alignment와 representation을 가장 깔끔하게 한 것을 볼 수가 있다. 그러나 영상의 흐름을 놓고 보면 각각의 결과를 통해 BARF 결과가 갖는 의의를 볼 수 있다. Positional encoding이 들어가지 않은 NeRF는 alignment를 나름 잘 해냈으나, fine detatil을 살리는 representation에는 좋지 못한 성능을 보였다. 반면에 Full positional encoding을 돌린 NeRF는 fine detail을 잘 살리는 representation 결과를 빠르게 얻었으나, alignment 결과는 많이 어긋남을 볼 수 있다. 이 둘을 비교함으로써 입력 차원의 저차원과 고차원이 갖는 각각의 이점을 파악할 수 있다. 특히 full positional encoding을 보았을 때, fine detail은 BARF보다 더 빨리 살리는 것을 볼 수 있다.
+{{< vs 3>}}
+
+{{< video src="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/videos2/blender_cams3.mp4" >}}
+{{< vs 3>}}
+다음 영상은 pose registration 성능 비교를 나타내고 있다. BARF가 NeRF에 비해 빠르게 정답으로 수렴하고 있으며, 심지어 NeRF는 수렴을 하지 못한 결과도 일부 보여주고 있었다. 이러한 결과들을 바탕으로 synthetic data와 real data에서 BARF를 돌린 실험 결과는 아래 이미지들을 통해 확인할 수 있다.
+{{< vs 3>}}
+
+{{< video src="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/videos2/blender_nvs.mp4" width="500">}}
+{{< vs 3>}}
+
+{{< video src="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/videos2/llff_optim.mp4" >}}
+{{< vs 3>}}
+
+{{< video src="https://chenhsuanlin.bitbucket.io/bundle-adjusting-NeRF/videos2/llff_nvs.mp4" >}}
 {{< vs 3>}}
 
 
