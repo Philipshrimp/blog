@@ -7,7 +7,7 @@ menu:
   sidebar:
     name: BARF 논문 리뷰
     identifier: barf-review
-    parent: nerf
+    parent: NeRF
     weight: 1
 categories:
   - NeRF
