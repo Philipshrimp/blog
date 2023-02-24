@@ -64,4 +64,13 @@ $$ L_{entropy} = \frac{1}{|R_s|+|R_u|}\sum_{\textbf{r}\in R_s\bigcup R_u}M(\text
 {{< /alert >}}
 {{< vs 3>}}
 
-.
+특이한 점은 loss를 계산하기 위한 대상으로 trained image의 ray set과 unseen image의 ray set을 사용한다고 논문에서 설명한다. 이 부분이 이해가 되지 않았는데, trained image는 보통 학습 입력으로 넣는 이미지의 view를 생각하면 되고, unseen image는 그와는 다른 viewpoint에서 쏜 ray를 생각하면 된다고 한다. 보통 NeRF는 L2 Norm 기반의 rendering loss를 계산하기 때문에 이러한 unseen ray를 활용할 수 없는데, entropy loss는 별도의 ground truth를 요구하는 것이 아닌 불확실성을 낮추는 loss이기 때문에 이게 가능했다고 한다.
+{{< vs 3>}}
+
+### Regularization by Information Gain Reduction
+만약 모든 트레이닝 이미지가 유사한 뷰를 가지고 있다면, 모델 오버피팅이 발생할 것이며, 이는 unseen image에 대한 일반화를 어렵게 한다. 이에 본 논문에서는 Information gain을 기반으로 하여 이웃한 ray들 간 일관된 density distribution을 보장할 수 있는 추가 loss 제안한다. 주어진 기준 ray에 대해 viewpoint가 미묘하게 다른(논문에서는 5도 정도의 rotation 차이를 주고 있음) viewpoint를 선정하여 그 시점에서부터 ray를 sampling한다. Information Gain Loss는 이러한 두 ray 간의 normalized density를 KL-Divergence를 기반으로 둘 간의 차이 계산을 수행한다. 본 term의 목적은 둘 간의 차이를 최소화하는 것이다. 이 방법을 통해 논문에서는 인접한 viewpoint들끼리 일반화를 가능하게 했다고 주장한다.
+
+{{< alert type="secondary" >}}   
+$$ L_{KL} = \sum^N_{i=1}p(\textbf{r}_i)\log\frac{p(\textbf{r}_i)}{p(\textbf{{r}}_i)} $$
+{{< /alert >}}
+{{< vs 3>}}
