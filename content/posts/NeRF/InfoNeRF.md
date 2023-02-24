@@ -18,7 +18,7 @@ tags:
   - NeRF
   - Information Theory
   - Few-shot NeRF
-draft: true
+draft: false
 ---
 {{< img src="https://velog.velcdn.com/images%2Fonground%2Fpost%2F7bd0a833-96b4-421f-8b27-0b821c2fca28%2Fimage.png" align="center"  >}}
 {{< vs 3>}}
