@@ -4,6 +4,6 @@ menu:
   sidebar:
     name: Development
     identifier: development
-    weight: 100
+    weight: 300
 draft: true
 ---

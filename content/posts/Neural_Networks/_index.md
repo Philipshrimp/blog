@@ -4,7 +4,7 @@ menu:
   sidebar:
     name: Neural Networks
     identifier: neural-networks
-    weight: 300
+    weight: 100
 ---
 
 ### test

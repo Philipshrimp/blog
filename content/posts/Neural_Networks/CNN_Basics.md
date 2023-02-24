@@ -6,7 +6,7 @@ author:
   name: Sunho Kim
 menu:
   sidebar:
-    name: CNN의 기본적인 구조 및 원리 - 1
+    name: CNN 기본 (1)
     identifier: cnn-basics
     parent: neural-networks
     weight: 1

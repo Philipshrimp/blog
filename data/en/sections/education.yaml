@@ -16,35 +16,35 @@ degrees:
   institution:
     name: Gwangju Institute of Science and Technology
     url: "https://www.gist.ac.kr/kr/main.html"
-  publications: #(optional)
-  - title: High-precision 3D coarse registration using RANSAC and randomly-picked rejections
-    url: "https://link.springer.com/chapter/10.1007/978-3-319-73603-7_21"
-  - title: Depth upsampling methods for high resolution depth map
-    url: "http://icserv.gist.ac.kr/mis/publications/data/2018/ICEIC2018Chang.pdf"
-  - title: Place recognition for SLAM using texture-independent features and DCGAN
-    url: "http://icserv.gist.ac.kr/mis/publications/data/2018/TenCon2018_%EA%B9%80%EC%84%A0%ED%98%B8_1.pdf"
-  - title: Image Correction Sampling and Filtering for High-Quailty Volumetric Rendering
-    url: "http://icserv.gist.ac.kr/mis/publications/data/2018/PA-3.pdf"
-  - title: Combining Local and Global Optical Flow for RGB-D Point Cloud Alignment
-    url: "https://www.ingentaconnect.com/contentone/ist/ei/2018/00002018/00000013/art00028?crawler=true&mimetype=application/pdf"
-  - title: Interest point detection using the superpixel segmentation and a binary descriptor
-    url: "https://dl.acm.org/doi/pdf/10.1145/3240876.3240890"
-  - title: Real-Time Multi-View Depth Map Generation Based on Guided Image and Parallel Processing
-    url: "http://icserv.gist.ac.kr/mis/publications/data/2017/Proceedings.pdf"
-  - title: 고화질 영상의 다운샘플링을 활용한 실시간 다시점 깊이지도 생성
-    url: "https://eecs.gist.ac.kr/prog/publication/vclab/C/list.do?gubunName=Domestic%20Conferences&mno=sub04_01_05"
-  - title: 배경이 제거된 마스크를 활용한 깊이지도 업샘플링 방법
-    url: "https://eecs.gist.ac.kr/prog/publication/vclab/C/list.do?gubunName=Domestic%20Conferences&mno=sub04_01_05"
+  # publications: #(optional)
+  # - title: High-precision 3D coarse registration using RANSAC and randomly-picked rejections
+  #   url: "https://link.springer.com/chapter/10.1007/978-3-319-73603-7_21"
+  # - title: Depth upsampling methods for high resolution depth map
+  #   url: "http://icserv.gist.ac.kr/mis/publications/data/2018/ICEIC2018Chang.pdf"
+  # - title: Place recognition for SLAM using texture-independent features and DCGAN
+  #   url: "http://icserv.gist.ac.kr/mis/publications/data/2018/TenCon2018_%EA%B9%80%EC%84%A0%ED%98%B8_1.pdf"
+  # - title: Image Correction Sampling and Filtering for High-Quailty Volumetric Rendering
+  #   url: "http://icserv.gist.ac.kr/mis/publications/data/2018/PA-3.pdf"
+  # - title: Combining Local and Global Optical Flow for RGB-D Point Cloud Alignment
+  #   url: "https://www.ingentaconnect.com/contentone/ist/ei/2018/00002018/00000013/art00028?crawler=true&mimetype=application/pdf"
+  # - title: Interest point detection using the superpixel segmentation and a binary descriptor
+  #   url: "https://dl.acm.org/doi/pdf/10.1145/3240876.3240890"
+  # - title: Real-Time Multi-View Depth Map Generation Based on Guided Image and Parallel Processing
+  #   url: "http://icserv.gist.ac.kr/mis/publications/data/2017/Proceedings.pdf"
+  # - title: 고화질 영상의 다운샘플링을 활용한 실시간 다시점 깊이지도 생성
+  #   url: "https://eecs.gist.ac.kr/prog/publication/vclab/C/list.do?gubunName=Domestic%20Conferences&mno=sub04_01_05"
+  # - title: 배경이 제거된 마스크를 활용한 깊이지도 업샘플링 방법
+  #   url: "https://eecs.gist.ac.kr/prog/publication/vclab/C/list.do?gubunName=Domestic%20Conferences&mno=sub04_01_05"
 - name: B.S in Computer Engineering
   icon: fa-graduation-cap
   timeframe: 2011-2014
   institution:
     name: Hanbat National University
     url: "https://www.hanbat.ac.kr/kor/index.do"
-  grade: #(optional)
-    scale: GPA
-    achieved: 4.14
-    outOf: 4.5
+  # grade: #(optional)
+  #   scale: GPA
+  #   achieved: 4.14
+  #   outOf: 4.5
 - name: High school
   icon: fa-school
   timeframe: 2007-2009

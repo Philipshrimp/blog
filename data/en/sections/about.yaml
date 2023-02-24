@@ -20,18 +20,14 @@ socialLinks:
   icon: "fab fa-github"
   url: "https://github.com/Philipshrimp"
 
+- name: Youtube
+  icon: "fas fa-video"
+  url: "https://www.youtube.com/@philipshrimp"
+
 - name: Codewars
   icon: "fas fa-code"
   url: "https://www.codewars.com/users/Philipshrimp"
-  
-- name: Twitter
-  icon: "fab fa-twitter"
-  url: "https://twitter.com/philip4___"
 
-- name: Facebook
-  icon: "fab fa-facebook"
-  url: "https://www.facebook.com/Ssunho.Kim/"
-
-- name: Instagram
-  icon: "fab fa-instagram"
-  url: "https://www.instagram.com/ssunho_kim/"
+- name: Linkedin
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/ssunhokim/"

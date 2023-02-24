@@ -1,0 +1,67 @@
+---
+title: "InfoNeRF: Ray Entropy Minimization for Few-Shot Neural Volume Rendering"
+date: 2023-02-24T16:50:18+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: InfoNeRF 논문 리뷰
+    identifier: infonerf-review
+    parent: neural-radiance-fields
+    weight: 2
+categories:
+  - NeRF
+tags:
+  - Deep Learning
+  - Neural Network
+  - Neural Rendering
+  - NeRF
+  - Information Theory
+  - Few-shot NeRF
+draft: true
+---
+{{< img src="https://velog.velcdn.com/images%2Fonground%2Fpost%2F7bd0a833-96b4-421f-8b27-0b821c2fca28%2Fimage.png" align="center"  >}}
+{{< vs 3>}}
+
+이 논문은 적은 양의 입력으로도 NeRF를 수행할 수 있는 방법을 제안하고 있다. 위 동영상은 4장의 입력만으로 NeRF를 돌린 결과인데, 4장의 이미지에서 저런 일반화된 뉴럴 렌더링 결과가 나왔다는 사실이 굉장히 놀라웠다.
+{{< vs 3>}}
+
+### Motivation
+이 논문의 목적은 Entropy 개념을 이용하여 regularization을 시도하는 것이다. 다른 별도의 모듈을 추가하거나, 학습을 추가하는 등의 복잡한 기법을 추가한 것이 아닌 정보 이론 개념을 활용한 loss term 추가만으로 이를 가능하게 했다는 점이 핵심이며, 이 덕분에 다른 많은 NeRF 모듈에 해당 방법을 붙이기 쉽게 적용할 수 있다고 한다. 추가로 유사도가 높은 viewpoint에서의 학습이 문제가 되어(Overfitting) 이에 대해 information gain을 추가 제안하고 있다. 이 두 가지 term을 loss에 추가하면서 결과적으로 train 당시 보지 못한 view에 대해서도 noise가 줄어든 결과를 얻을 수 있었다.
+{{< vs 3>}}
+
+### Regularization by Ray Entropy Minimization
+먼저 논문에서는 ray density를 normalize하여 확률처럼 접근할 수 있도록 바꾸었다.
+
+{{< alert type="secondary" >}}   
+$$ p(\textbf{r}_i) = \frac{\alpha_i}{\sum_j\alpha_j} = \frac{1-\exp(-\sigma_i\delta_i)}{\sum_j(1-\exp(-\sigma_j\delta_j))} $$
+{{< /alert >}}
+{{< vs 3>}}
+
+여기서 \\(\alpha\\)는 렌더링에서의 불투명도(opacity)를 의미한다. ray 내에 특정 sampled point의 density를 기반으로 이렇게 불투명도를 표현하고 있는데, 주로 이 표현은 volumetric rendering에서 많이 표현하는 부분이기도 하다. 수식을 해석하자면, 하나의 ray로부터 나온 모든 sampled point들의 density를 기준으로 하나의 sampled point를 normalize하고 있는 것이다. 이를 하나의 확률로써 간주하고, 이 각각의 sampled point의 density에 대한 entropy를 수식으로 표현하면 다음과 같다.
+
+{{< alert type="secondary" >}}   
+$$ H(\textbf{r}) = \sum^N_{i=1}p(\textbf{r}_i)\log{p(\textbf{r}_i)} $$
+{{< /alert >}}
+{{< vs 3>}}
+
+하나의 ray상에 있는 전체 density를 기준으로 entropy를 구하고 있는데, 이론 그대로 보자면 density 값이 일부 확실한 영역에만 높게 나왔다면 이 entropy 값은 낮을 것이고, 결과적으로 해당 영역에 확실하게 렌더링을 수행할 것이다. 반면, 여러 영역 여기저기에 density 값이 높다면 entropy 값은 크게 나올 것이다. 즉, 해당 ray에서의 렌더링을 진행하기 위한 확실성이 떨어짐을 의미하는 것이다. 결과적으로 이 부분에서는 entropy 값이 낮게 나오도록 유도하는 것이 핵심이다.
+{{< vs 3>}}
+
+그러나 단순히 이 이론대로 진행하기에는 일부 ray에서 non-hitting case임에도 불구하고 low entropy가 나오도록 강요되는 경우가 있었다고 한다. 이러한 경우에는 잠재적인 artifact 생성의 문제를 야기하게 된다. 논문에서는 이러한 부분을 완화하기 위해 마스크를 적용해서 low density를 갖는 영역을 무시하고 진행하도록 한다.
+
+{{< alert type="secondary" >}}   
+$$ M(\textbf{r}) = \begin{cases} 
+1, & Q(\textbf{r}) > \epsilon \\\
+0, & otherwise
+\end{cases}$$
+{{< /alert >}}
+{{< vs 3>}}
+여기서 Q는 하나의 ray에서 sample한 N개의 point에 대한 누적 불투명도를 의미한다. 이 누적 불투명도가 특정 임계치를 초과하면 유효한 영역으로, 그렇지 않을 경우에는 무시할 영역으로 간주한다. 이를 기반으로 최종적인 ray entropy loss를 정의하면 다음과 같다.
+
+{{< alert type="secondary" >}}   
+$$ L_{entropy} = \frac{1}{|R_s|+|R_u|}\sum_{\textbf{r}\in R_s\bigcup R_u}M(\textbf{r})\odot H(\textbf{r}) $$
+{{< /alert >}}
+{{< vs 3>}}
+
+.

@@ -7,7 +7,7 @@ menu:
   sidebar:
     name: BARF 논문 리뷰
     identifier: barf-review
-    parent: NeRF
+    parent: neural-radiance-fields
     weight: 1
 categories:
   - NeRF
