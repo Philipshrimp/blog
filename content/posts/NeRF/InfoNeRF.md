@@ -32,20 +32,20 @@ draft: false
 
 {{< img src="https://milkclouds.work/content/images/Pasted%20image%2020220626024425.png" width="600" align="center"  >}}
 {{< vs 3>}}
-논문의 appendix에서는 이를 그래프로써 표현하며 부연설명을 하고 있다. NeRF에서, 처음에 100개의 view에 대한 이미지를 입력으로 넣었을 때는 상대적으로 많이 낮게 나왔던 density의 entropy나 information gain이 4개 view로 줄어들자 크게 높아진 것을 볼 수 있다. InfoNeRF에서는 이 두 부분을 loss term으로 추가함으로써 해당 값들을 최소화 해 여러 view에서 높은 정확도로 density를 추정하도록 한다. 
+논문의 appendix에서는 이를 그래프로써 표현하며 부연설명을 하고 있다. NeRF에서, 처음에 100개의 view에 대한 이미지를 입력으로 넣었을 때는 상대적으로 많이 낮게 나왔던 density의 entropy나 information gain이 4개 view로 줄어들자 크게 높아진 것을 볼 수 있다. InfoNeRF에서는 이 두 부분을 loss term으로 추가함으로써 해당 값들을 최소화 해 여러 view에서 높은 정확도로 density를 추정하도록 한다.
 
 
 ### Regularization by Ray Entropy Minimization
 먼저 논문에서는 ray density를 normalize하여 확률처럼 접근할 수 있도록 바꾸었다.
 
-{{< alert type="secondary" >}}   
+{{< alert type="secondary" >}}
 $$ p(\textbf{r}_i) = \frac{\alpha_i}{\sum_j\alpha_j} = \frac{1-\exp(-\sigma_i\delta_i)}{\sum_j(1-\exp(-\sigma_j\delta_j))} $$
 {{< /alert >}}
 {{< vs 3>}}
 
 여기서 \\(\alpha\\)는 렌더링에서의 불투명도(opacity)를 의미한다. ray 내에 특정 sampled point의 density를 기반으로 이렇게 불투명도를 표현하고 있는데, 주로 이 표현은 volumetric rendering에서 많이 표현하는 부분이기도 하다. 수식을 해석하자면, 하나의 ray로부터 나온 모든 sampled point들의 density를 기준으로 하나의 sampled point를 normalize하고 있는 것이다. 이를 하나의 확률로써 간주하고, 이 각각의 sampled point의 density에 대한 entropy를 수식으로 표현하면 다음과 같다.
 
-{{< alert type="secondary" >}}   
+{{< alert type="secondary" >}}
 $$ H(\textbf{r}) = \sum^N_{i=1}p(\textbf{r}_i)\log{p(\textbf{r}_i)} $$
 {{< /alert >}}
 {{< vs 3>}}
@@ -55,8 +55,8 @@ $$ H(\textbf{r}) = \sum^N_{i=1}p(\textbf{r}_i)\log{p(\textbf{r}_i)} $$
 
 그러나 단순히 이 이론대로 진행하기에는 일부 ray에서 non-hitting case임에도 불구하고 low entropy가 나오도록 강요되는 경우가 있었다고 한다. 이러한 경우에는 잠재적인 artifact 생성의 문제를 야기하게 된다. 논문에서는 이러한 부분을 완화하기 위해 마스크를 적용해서 low density를 갖는 영역을 무시하고 진행하도록 한다.
 
-{{< alert type="secondary" >}}   
-$$ M(\textbf{r}) = \begin{cases} 
+{{< alert type="secondary" >}}
+$$ M(\textbf{r}) = \begin{cases}
 1, & Q(\textbf{r}) > \epsilon \\\
 0, & otherwise
 \end{cases}$$
@@ -64,7 +64,7 @@ $$ M(\textbf{r}) = \begin{cases}
 {{< vs 3>}}
 여기서 Q는 하나의 ray에서 sample한 N개의 point에 대한 누적 불투명도를 의미한다. 이 누적 불투명도가 특정 임계치를 초과하면 유효한 영역으로, 그렇지 않을 경우에는 무시할 영역으로 간주한다. 이를 기반으로 최종적인 ray entropy loss를 정의하면 다음과 같다.
 
-{{< alert type="secondary" >}}   
+{{< alert type="secondary" >}}
 $$ L_{entropy} = \frac{1}{|R_s|+|R_u|}\sum_{\textbf{r}\in R_s\bigcup R_u}M(\textbf{r})\odot H(\textbf{r}) $$
 {{< /alert >}}
 {{< vs 3>}}
@@ -75,13 +75,13 @@ $$ L_{entropy} = \frac{1}{|R_s|+|R_u|}\sum_{\textbf{r}\in R_s\bigcup R_u}M(\text
 ### Regularization by Information Gain Reduction
 만약 모든 트레이닝 이미지가 유사한 뷰를 가지고 있다면, 모델 오버피팅이 발생할 것이며, 이는 unseen image에 대한 일반화를 어렵게 한다. 이에 본 논문에서는 Information gain을 기반으로 하여 이웃한 ray들 간 일관된 density distribution을 보장할 수 있는 추가 loss 제안한다. 주어진 기준 ray에 대해 viewpoint가 미묘하게 다른(논문에서는 5도 정도의 rotation 차이를 주고 있음) viewpoint를 선정하여 그 시점에서부터 ray를 sampling한다. Information Gain Loss는 이러한 두 ray 간의 normalized density를 KL-Divergence를 기반으로 둘 간의 차이 계산을 수행한다. 본 term의 목적은 둘 간의 차이를 최소화하는 것이다. 이 방법을 통해 논문에서는 인접한 viewpoint들끼리 일반화를 가능하게 했다고 주장한다.
 
-{{< alert type="secondary" >}}   
+{{< alert type="secondary" >}}
 $$ L_{KL} = \sum^N_{i=1}p(\textbf{r}_i)\log\frac{p(\textbf{r}_i)}{p(\tilde{\textbf{r}}_i)} $$
 {{< /alert >}}
 {{< vs 3>}}
 
 ### Overall Objective
-{{< alert type="secondary" >}}   
+{{< alert type="secondary" >}}
 $$ L_{Total} = L_{RGB} + \lambda_1L_{entropy} + \lambda_2L_{KL} $$
 {{< /alert >}}
 {{< vs 3>}}
@@ -91,4 +91,46 @@ $$ L_{Total} = L_{RGB} + \lambda_1L_{entropy} + \lambda_2L_{KL} $$
 ### Experimental results
 {{< img src="http://cvlab.snu.ac.kr/research/InfoNeRF/asset/project_page_table.png" width="800" align="center"  >}}
 {{< vs 3>}}
-위 표는 360도 synthetic data로부터 4개의 view를 샘플링하여 novel view synthesis를 수행한 결과를 나타낸다. (cont'd)
+위 표는 360도 synthetic data로부터 4개의 view를 샘플링하여 novel view synthesis를 수행한 결과를 나타낸다. 100개 view를 통해 novel view synthesis를 진행한 NeRF와 결과치를 비교하고 있는데, 4개 view로 렌더링을 한 NeRF뿐만 아니라 PixelNeRF나 DietNeRF와 비교했을때도 더 높은 수치의 정확도를 보여주고 있음을 알 수 있다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results001.jpg" width="500" align="center"  >}}
+{{< img src="/images/infonerf_results002.jpg" width="800" align="center"  >}}
+{{< vs 3>}}
+다음 실험은 추가로 Neural volumes(이하 NV) 논문과 Neural body(이하 NB) 논문, 그리고 NeRF를 비교군으로 하여 사람 객체에 대한 뉴럴 렌더링을 수행한 결과를 보여준다. 참고로 NB에 Prior가 들어가 있는데, 이는 Geometric prior가 사전에 들어가서 높은 정확도로 렌더링을 하기 위함이다. 이 실험의 목적은 geometric prior가 들어간 알고리즘과 비교했을 때, 4 view 기반 뉴럴 렌더링이 얼마나 잘 되는지를 비교하기 위한 실험으로 보이는데, NeRF나 NV에 비해서는 유실된 부분이 거의 없다시피하며 실제 ground truth의 외형을 잘 그려내려고 하는 것을 확인할 수 있었다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results003.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+좀 더 복잡한 scene에서의 뉴럴 렌더링 결과 또한 4 view에서도 잘 나오고 있었으며
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results004.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+Unseen viewpoint 갯수가 렌더링에 미치는 영향을 보여주기 위해 unseen ray를 늘려가며 결과를 비교했다. 1024개 이상으로 unseen ray를 추가하니 그 이상 성능 향상이 보이지는 않았다. 수치상으로는 큰 변화가 있는 것 같지는 않으나, 그림 (a)와 (b)를 비교했을 때 artifact가 많이 줄어든 것을 확인할 수 있었다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results005.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+Entropy loss와 Information gain loss를 추가했을 때의 성능 변화는 위 실험 결과에서 확인할 수 있다. 특히, Entropy loss 유무에 따른 수치 차이가 더 벌어짐을 확인할 수 있었다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results007.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+해당 결과를 그림으로 나타내고 있는데, Information gain loss만 없는 경우보다 entropy loss만 없는 경우가 더 유실된 영역이 많았다. entropy loss가 없는 few-shot NeRF는 애초에 noisy reconstruction 결과가 나오기 때문에 이 상황에서 neighboring 간의 density 차이 최소화를 하는 information gain loss는 의미가 없기 때문이다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results006.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+다음은 Information gain loss의 효과를 baseline에 따라 비교한 결과를 나타낸다. 위에서 말하는 narrow-baseline과 wide-baseline은 viewpoint 변화가 좁고 넓음의 차이에 대한 것을 나타낸다. Wide baseline에서는 Information gain loss가 있건 없건 큰 차이를 보이진 않았으나, narrow baseline에서는 성능 차이가 조금 더 크게 나는 것을 볼 수 있었다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results008.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+위 결과는 InfoNeRF를 PixelNeRF나 MipNeRF같은 다른 방법론에 함께 적용한 결과를 보여준다. InfoNeRF는 앞서 언급했듯이 다른 모듈이 추가된 것이 아니라 loss term만 추가되었기 때문에 다른 NeRF 알고리즘에 적용하기 좋다는 장점이 있다.
+{{< vs 3>}}
+
+{{< img src="/images/infonerf_results009.jpg" width="900" align="center"  >}}
+{{< vs 3>}}
+결과가 궁금해서 소스 코드를 직접 돌려봤는데, 이 렌더링 결과가 고작 4개의 view를 50,000번의 iteration만 돌려서 나온 결과라는 사실에 적잖이 놀랐다.
+{{< vs 3>}}
