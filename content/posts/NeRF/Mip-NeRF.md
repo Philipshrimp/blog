@@ -1,6 +1,14 @@
 ---
-title: "Mip NeRF"
+title: "Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields"
 date: 2023-03-07T19:01:06+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: MipNeRF 논문 리뷰
+    identifier: mipnerf-review
+    parent: neural-radiance-fields
+    weight: 9
 draft: true
 ---
 

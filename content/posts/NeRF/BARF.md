@@ -8,7 +8,7 @@ menu:
     name: BARF 논문 리뷰
     identifier: barf-review
     parent: neural-radiance-fields
-    weight: 1
+    weight: 4
 categories:
   - NeRF
 tags:

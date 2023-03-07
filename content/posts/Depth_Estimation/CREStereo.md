@@ -1,6 +1,14 @@
 ---
-title: "CREStereo"
+title: "Practical Stereo Matching via Cascaded Recurrent Network with Adaptive Correlation (CREStereo)"
 date: 2023-03-07T19:05:38+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: CREStereo 논문 리뷰
+    identifier: crestereo-review
+    parent: depth-estimation
+    weight: 2
 draft: true
 ---
 

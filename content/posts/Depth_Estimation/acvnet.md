@@ -1,6 +1,14 @@
 ---
-title: "Acvnet"
+title: "Attention Concatenation Volume for Accurate and Efficient Stereo Matching (ACVNet)"
 date: 2022-07-07T17:47:06+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: ACVNet 논문 리뷰
+    identifier: acvnet-review
+    parent: depth-estimation
+    weight: 3
 draft: true
 ---
 

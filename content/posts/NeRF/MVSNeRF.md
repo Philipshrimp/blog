@@ -1,6 +1,14 @@
 ---
-title: "MVSNeRF"
+title: "MVSNeRF: Fast Generalizable Radiance Field Reconstruction from Multi-View Stereo"
 date: 2023-03-07T19:10:08+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: MVSNeRF 논문 리뷰
+    identifier: mvsnerf-review
+    parent: neural-radiance-fields
+    weight: 6
 draft: true
 ---
 

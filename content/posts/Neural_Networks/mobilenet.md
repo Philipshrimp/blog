@@ -1,6 +1,14 @@
 ---
-title: "Mobilenet"
+title: "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Application"
 date: 2022-07-07T17:40:33+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: MobileNet 논문 리뷰
+    identifier: mobilenet-review
+    parent: neural-networks
+    weight: 3
 draft: true
 ---
 

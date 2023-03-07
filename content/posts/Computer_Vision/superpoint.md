@@ -1,6 +1,14 @@
 ---
-title: "Superpoint"
+title: "SuperPoint: Self-Supervised Interest Point Detection and Description"
 date: 2022-07-07T17:43:41+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: Superpoint 논문 리뷰
+    identifier: superpoint-review
+    parent: computer-vision
+    weight: 1
 draft: true
 ---
 

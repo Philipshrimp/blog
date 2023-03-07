@@ -1,6 +1,14 @@
 ---
-title: "SIREN INR"
+title: "Implicit Neural Representations with Periodic Activation Functions (SIREN INR)"
 date: 2023-03-07T19:09:20+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: SIREN INR 논문 리뷰
+    identifier: sireninr-review
+    parent: neural-radiance-fields
+    weight: 5
 draft: true
 ---
 

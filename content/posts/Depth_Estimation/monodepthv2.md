@@ -1,6 +1,14 @@
 ---
-title: "Monodepthv2"
+title: "Digging into Self-Supervised Monocular Depth Prediction (Monodepth2)"
 date: 2022-07-07T17:47:01+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: Monodepth2 논문 리뷰
+    identifier: monodepth2-review
+    parent: depth-estimation
+    weight: 1
 draft: true
 ---
 

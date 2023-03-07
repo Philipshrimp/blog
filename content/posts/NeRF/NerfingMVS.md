@@ -1,6 +1,14 @@
 ---
-title: "NerfingMVS"
+title: "NerfingMVS: Guided Optimization of Neural Radiance Fields for Indoor Multi-view Stereo"
 date: 2023-03-07T19:10:47+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: NerfingMVS 논문 리뷰
+    identifier: nerfingmvs-review
+    parent: neural-radiance-fields
+    weight: 7
 draft: true
 ---
 

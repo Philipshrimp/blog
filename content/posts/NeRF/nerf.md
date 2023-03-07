@@ -1,6 +1,14 @@
 ---
-title: "Nerf"
+title: "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis"
 date: 2022-07-07T17:44:00+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: NeRF 논문 리뷰
+    identifier: nerf-review
+    parent: neural-radiance-fields
+    weight: 1
 draft: true
 ---
 

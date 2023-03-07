@@ -1,6 +1,14 @@
 ---
-title: "Point NeRF"
+title: "Point-NeRF: Point-based Neural Radiance Fields"
 date: 2023-03-07T19:01:43+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: Point-NeRF 논문 리뷰
+    identifier: pointnerf-review
+    parent: neural-radiance-fields
+    weight: 3
 draft: true
 ---
 

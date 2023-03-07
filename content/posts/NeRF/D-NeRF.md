@@ -1,6 +1,14 @@
 ---
-title: "D-NeRF"
+title: "D-NeRF: Neural Radiance Fields for Dynamic Scenes"
 date: 2023-03-07T18:59:58+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: D-NeRF 논문 리뷰
+    identifier: dnerf-review
+    parent: neural-radiance-fields
+    weight: 8
 draft: true
 ---
 

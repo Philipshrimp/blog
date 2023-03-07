@@ -1,6 +1,14 @@
 ---
-title: "NAS"
+title: "Normal Assisted Stereo Depth Estimation"
 date: 2023-03-07T19:06:23+09:00
+author:
+  name: Sunho Kim
+menu:
+  sidebar:
+    name: NAS 논문 리뷰
+    identifier: nas-review
+    parent: depth-estimation
+    weight: 3
 draft: true
 ---
 
