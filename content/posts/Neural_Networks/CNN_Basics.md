@@ -1,7 +1,10 @@
 ---
 title: "CNN의 기본적인 구조 및 원리 - 1"
 date: 2022-08-04T14:52:09+09:00
-hero: cnn.png
+# images:
+#   - images/cnn-basics.png
+cover:
+  image: "/images/cnn-basics.png"
 author:
   name: Sunho Kim
 menu:
