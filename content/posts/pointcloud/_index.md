@@ -5,6 +5,6 @@ menu:
     name: Point Cloud Processing
     identifier: point-cloud-processing
     weight: 300
-draft: false
 ---
 
+### test
